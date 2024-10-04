@@ -35,7 +35,7 @@ public class CellSimulation {
 
     private void populateCells() {
         double size = rand.nextInt(5) + 2;
-        Cell cell = new Cell(
+        cell = new Cell(
             rand.nextDouble() * (canvas.getWidth() - size),
             rand.nextDouble() * (canvas.getWidth() - size),
             size,
