@@ -1,7 +1,6 @@
 package cellabsorption;
 
 import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.Point;
 
 import java.awt.Color;
@@ -9,9 +8,9 @@ import java.util.Random;
 
 @SuppressWarnings("SameParameterValue")
 public class CellSimulation {
-
     private CanvasWindow canvas;
     private Random rand = new Random();
+
     private Cell cell;
 
     public static void main(String[] args) {
@@ -46,5 +45,5 @@ public class CellSimulation {
     private static double sqr(double x) {
         return x * x;
     }
-    
+
 }

@@ -1,18 +1,22 @@
 package cellabsorption;
 
+import java.util.Random;
+
 import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.Point;
 
 import java.awt.Color;
 
-public class Cell extends CellSimulation{
+
+public class Cell {
 
     private static final double
         WIGGLINESS = 0.2,
         WANDER_FROM_CENTER = 60000;
-    private Ellipse shape;
+
     private double radius;
     private double direction;
+    private Ellipse shape;
 
     public Cell(double x, double y, double radius, Color color) {
         shape = new Ellipse(x, y, radius * 2, radius * 2);
@@ -29,12 +33,7 @@ public class Cell extends CellSimulation{
         setRadius(radius + amount);
     }
 
-    public static double normalizeRadians(double theta) {
-        double pi2 = Math.PI * 2;
-        return ((theta + Math.PI) % pi2 + pi2) % pi2 - Math.PI;
-    }
-
-    public void setRadius(double newRadius) {
+    private void setRadius(double newRadius) {
         if (newRadius < 0) {
             newRadius = 0;
         }
@@ -55,6 +54,11 @@ public class Cell extends CellSimulation{
             direction
                 + (Math.random() - 0.5) * WIGGLINESS
                 + turnTowardCenter * Math.tanh(distToCenter / WANDER_FROM_CENTER));
+    }   
+
+    private static double normalizeRadians(double theta) {
+        double pi2 = Math.PI * 2;
+        return ((theta + Math.PI) % pi2 + pi2) % pi2 - Math.PI;
     }
-    
+
 }
