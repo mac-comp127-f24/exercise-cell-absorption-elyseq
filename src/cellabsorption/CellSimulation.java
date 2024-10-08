@@ -4,7 +4,6 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Point;
 
 import java.awt.Color;
-import java.awt.List;
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -27,7 +26,7 @@ public class CellSimulation {
             Point canvasCenter = new Point(canvas.getWidth() / 2.0, canvas.getHeight() / 2.0);
             for(int i = 0; i < cells.size(); i++) {
                 cells.get(i).moveAround(canvasCenter);
-                cells.get(i).grow(0.02);
+                handleCellInteraction();
             }
             canvas.draw();
             canvas.pause(10);
@@ -44,8 +43,14 @@ public class CellSimulation {
         }
     }
 
-    private static double sqr(double x) {
-        return x * x;
+    private void handleCellInteraction() {
+        for(int i = 0; i < cells.size(); i++) { // for i from 0 up to max cell index
+            Cell cell1 = cells.get(i);// get cell at index i
+            for(int j = i + 1; j < cells.size(); j++) { // for j from i+1 up to max cell index
+                Cell cell2 = cells.get(j);// get cell at index j
+                cell1.interactWith(cell2);// make the two cells interact
+            }
+        }
     }
 
 }
